@@ -528,11 +528,18 @@ namespace ModTools
             else if (value is CitizenInfo)
             {
                 var info = (CitizenInfo)value;
+                               if (info.m_skinRenderer?.sharedMesh != null)
+                                    {
+                                        if (GUILayout.Button("Preview"))
+                                            {
+                        MeshViewer.CreateMeshViewer(info.name, info.m_skinRenderer?.sharedMesh, info.m_skinRenderer?.sharedMaterial);
+                                            }
+                                    }
                 if (info.m_lodMesh != null)
                 {
                     if (GUILayout.Button("Preview LOD"))
                     {
-                        MeshViewer.CreateMeshViewer(info.name, info.m_lodMesh, info.m_lodMaterial);
+                        MeshViewer.CreateMeshViewer(info.name + "_LOD", info.m_lodMesh, info.m_lodMaterial);
                     }
                 }
             }
